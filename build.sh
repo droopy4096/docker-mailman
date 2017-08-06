@@ -7,6 +7,9 @@ set -e
 if [ "$TRAVIS_BRANCH" = "master" ]; then
     CORE_TAG="latest"
     WEB_TAG="latest"
+elif [[ -v "$TRAVIS_BRANCH" ]]; then
+    CORE_TAG="$TRAVIS_BRANCH"
+    WEB_TAG="$TRAVIS_BRANCH"
 else
     CORE_TAG=`cat core/VERSION`
     WEB_TAG=`cat web/VERSION`
